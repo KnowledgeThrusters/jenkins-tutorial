@@ -11,5 +11,10 @@ pipeline {
                 '''
             }
         }
+        stage('Archive Artifacts') {
+            steps {
+                archiveArtifacts artifacts: 'output/*.txt'
+            }
+        }
     }
 }
