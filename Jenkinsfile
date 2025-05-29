@@ -1,23 +1,14 @@
 pipeline {
-    agent {
-        docker {
-            image 'php:8.2'
-        }
-    }
+    agent any
 
     stages {
-        stage('Syntax Check') {
+        stage('Prepare Output') {
             steps {
                 sh '''
-                mkdir -p logs
-                find . -name "*.php" | xargs -n1 php -l > logs/lint.log || true
+                mkdir -p output
+                echo "Hello from Jenkins!" > output/hello.txt
+                echo "Current build number is $BUILD_NUMBER" > output/build-info.txt
                 '''
-            }
-        }
-
-        stage('Archive Lint Logs') {
-            steps {
-                archiveArtifacts artifacts: 'logs/lint.log'
             }
         }
     }
