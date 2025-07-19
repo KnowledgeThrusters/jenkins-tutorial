@@ -3,13 +3,11 @@ def call(Map args = [:]) {
     def service = args.service ?: 'default-service'
 
     stage('Prepare Output') {
-        steps {
              echo "Branch: ${branch}"
              echo "Service: ${service}"
             sh '''
             mkdir -p output
             echo "Hello from Jenkins!" > output/hello.txt
             '''
-        }
     }
 }
