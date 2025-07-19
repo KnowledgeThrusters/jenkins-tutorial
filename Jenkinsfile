@@ -1,26 +1,15 @@
 def call(Map args = [:]) {
     def branch = args.branch ?: 'main'
     def service = args.service ?: 'default-service'
-    
-    // pipeline {
-    //     agent any
-    
-        stages {
-            stage('Prepare Output') {
-                steps {
-                     echo "Branch: ${branch}"
-                     echo "Service: ${service}"
-                    sh '''
-                    mkdir -p output
-                    echo "Hello from Jenkins!" > output/hello.txt
-                    '''
-                }
-            }
-            /*stage('Archive Artifacts') {
-                steps {
-                    archiveArtifacts artifacts: 'output/*.txt'
-                }
-            }*/
+
+    stage('Prepare Output') {
+        steps {
+             echo "Branch: ${branch}"
+             echo "Service: ${service}"
+            sh '''
+            mkdir -p output
+            echo "Hello from Jenkins!" > output/hello.txt
+            '''
         }
- //   }
+    }
 }
