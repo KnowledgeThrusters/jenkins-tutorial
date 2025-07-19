@@ -2,8 +2,8 @@ def call(Map args = [:]) {
     def branch = args.branch ?: 'main'
     def service = args.service ?: 'default-service'
     
-    pipeline {
-        agent any
+    // pipeline {
+    //     agent any
     
         stages {
             stage('Prepare Output') {
@@ -22,5 +22,5 @@ def call(Map args = [:]) {
                 }
             }*/
         }
-    }
+ //   }
 }
